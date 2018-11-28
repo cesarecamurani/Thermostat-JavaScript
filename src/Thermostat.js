@@ -24,17 +24,31 @@ Thermostat.prototype.initialPowerMode = function() {
 };
 
 Thermostat.prototype.powerSavingModeOn = function() {
+  this._maxTemp = 25;
   return this._powerSaving = 'On';
-  return this._maxTemp = 25;
 };
 
 Thermostat.prototype.powerSavingModeOff = function() {
+  this._maxTemp = 32;
   return this._powerSaving = 'Off';
-  return this._maxTemp = 32;
 };
 
-Thermostat.prototype.up = function() {
-  return this._temperature++ ;
+Thermostat.prototype.up = function () {
+  if (this._powerSaving === 'On') {
+    if (this._temperature < this._maxTemp) {
+      this._temperature++;
+      return this._temperature;
+    } else {
+      return this._maxTemp;
+    }
+  } else if (this._powerSaving === 'Off') {
+    if (this._temperature < this._maxTemp) {
+      this._temperature++;
+      return this._temperature;
+    } else {
+      return this._maxTemp;
+    }
+  }
 };
 
 Thermostat.prototype.down = function() {

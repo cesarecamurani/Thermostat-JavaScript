@@ -75,14 +75,22 @@ describe('Thermostat', function() {
 
   });
 
+  describe('sets a max temperature depending on the power mode', function() {
 
+    it('it stops increasing the temperature @ 25 degrees', function() {
+      for(var i = 1; i < 5; i++) { thermostat.up(); }
+      thermostat.up();
+      expect(thermostat.temperature()).toEqual(25)
+    });
 
+    it('it stops increasing the temperature @ 32 degrees', function() {
+      thermostat.powerSavingModeOff();
+      for(var i = 1; i < 12; i++) { thermostat.up(); }
+      thermostat.up();
+      expect(thermostat.temperature()).toEqual(32)
+    });
 
-
-
-
-
-
+  });
 
 
 
