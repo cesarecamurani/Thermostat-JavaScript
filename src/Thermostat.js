@@ -63,3 +63,13 @@ Thermostat.prototype.down = function() {
 Thermostat.prototype.reset = function() {
   return this._temperature = 20;
 };
+
+Thermostat.prototype.usage = function () {
+  if(this._temperature < 18) {
+    return this.energyUsage = 'Low usage'
+  } else if(this._temperature < 25) {
+    return this.energyUsage = 'Medium usage'
+  } else {
+    return this.energyUsage = 'High usage'
+  }
+};
