@@ -59,6 +59,14 @@ describe('Thermostat', function() {
       expect(thermostat.temperature()).toEqual(20);
     });
 
+    it('reset the temperature to 25 degrees when PSM is on', function() {
+      thermostat.powerSavingModeOff();
+      for(var i=0; i < 10; i++) { thermostat.up(); }
+      thermostat.powerSavingModeOn();
+      expect(thermostat.temperature()).toEqual(25);
+    });
+
+
   });
 
   describe('change the power mode', function() {

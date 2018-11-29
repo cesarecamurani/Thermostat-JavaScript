@@ -4,6 +4,7 @@ $(function() {
 
   updateTemperature();
   updatePowerStatus();
+  // resetTo25();
 
   function updateTemperature() {
     $('#temperature').text(thermostat.temperature());
